@@ -1,0 +1,47 @@
+.carousel-container {
+  height: 456px;
+  width: 1080px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-container {
+    height: 188px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.carousel-loader {
+  display: flex;
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-container {
+  list-style-type: none;
+}
+
+.offer-img {
+  height: 456px;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .offer-img {
+    height: 188px;
+    width: 100%;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+  }
+}
