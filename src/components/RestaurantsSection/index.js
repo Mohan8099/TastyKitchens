@@ -3,8 +3,8 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import {RiArrowDropLeftLine, RiArrowDropRightLine} from 'react-icons/ri'
-import {BsFilterLeft} from 'react-icons/bs'
 
+import RestaurantHeader from '../RestaurantHeader'
 import RestaurantDetailsCard from '../RestaurantDetailsCard'
 
 import './index.css'
@@ -28,7 +28,6 @@ class RestaurantsSection extends Component {
     isLoading: false,
     sortByValue: sortByOptions[1].value,
     activePage: 1,
-    lengthOfRestaurantList: 0,
   }
 
   componentDidMount() {
@@ -55,7 +54,6 @@ class RestaurantsSection extends Component {
     if (response.ok === true) {
       const data = await response.json()
       console.log(data)
-      const lengthOfRestaurantList = Math.ceil(data.total / 9)
 
       const updatedData = data.restaurants.map(eachRestaurant => ({
         costForTwo: eachRestaurant.cost_for_two,
@@ -75,7 +73,6 @@ class RestaurantsSection extends Component {
       this.setState({
         restaurantDetailsList: updatedData,
         isLoading: false,
-        lengthOfRestaurantList,
       })
     }
   }
@@ -109,44 +106,15 @@ class RestaurantsSection extends Component {
   }
 
   renderRestaurants = () => {
-    const {
-      restaurantDetailsList,
-      sortByValue,
-      activePage,
-      lengthOfRestaurantList,
-    } = this.state
+    const {restaurantDetailsList, sortByValue, activePage} = this.state
 
     return (
       <>
-        <div className="restaurant-header">
-          <div>
-            <h1 className="restaurant-list-heading">Popular Restaurants</h1>
-            <p className="restaurant-description">
-              Select Your favourite restaurant special dish and make your day
-              happy....
-            </p>
-          </div>
-          <div className="sorting-container">
-            <BsFilterLeft className="sort-by-icon" />
-            <p className="sort-by-text">Sort by</p>
-            <select
-              className="sort-by-select"
-              value={sortByValue}
-              onChange={this.updateSortByValue}
-            >
-              {sortByOptions.map(eachOption => (
-                <option
-                  key={eachOption.id}
-                  value={eachOption.value}
-                  className="select-option"
-                >
-                  {eachOption.displayText}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
+        <RestaurantHeader
+          sortByValue={sortByValue}
+          sortByOptions={sortByOptions}
+          updateSortByValue={this.updateSortByValue}
+        />
         <hr className="line" />
         <div className="cards-container">
           <ul className="restaurants-list">
@@ -158,7 +126,6 @@ class RestaurantsSection extends Component {
             ))}
           </ul>
         </div>
-
         <div className="pagination-container">
           <button
             testid="pagination-left-button"
@@ -168,8 +135,8 @@ class RestaurantsSection extends Component {
           >
             <RiArrowDropLeftLine className="arrow" />
           </button>
-          <h1 testid="active-page-number" className="page-numbers">
-            {activePage} of {lengthOfRestaurantList}
+          <h1 testid="active-page-number" className="page-number">
+            {activePage} of 4
           </h1>
           <button
             testid="pagination-right-button"

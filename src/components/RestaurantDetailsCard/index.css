@@ -15,9 +15,10 @@
 }
 
 .restaurant-img {
-  width: 160px;
+  width: 200px;
   height: 120px;
   border-radius: 12px;
+  margin-right: 20px;
 }
 
 .restaurant-details-container {
@@ -59,7 +60,6 @@
 .rating-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
 }
 
 .star {

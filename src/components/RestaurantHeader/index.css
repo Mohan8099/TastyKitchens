@@ -1,0 +1,104 @@
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-left: 10%;
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-header {
+    margin-top: 32px;
+  }
+}
+
+.restaurant-list-heading {
+  color: #183b56;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+.restaurants-description {
+  color: #64748b;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.sorting-container {
+  margin-top: 7%;
+  margin-right: 10%;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant-list-heading {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0px;
+  }
+
+  .restaurants-description {
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0px;
+  }
+
+  .sorting-container {
+    margin: 0px;
+  }
+}
+
+.sort-by-icon {
+  width: 24px;
+  height: 24px;
+  color: #475569;
+  margin-right: 6px;
+}
+
+.sort-by-text {
+  color: #475569;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-weight: normal;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.sort-by-select {
+  color: #475569;
+  background-color: #ffffff;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-weight: normal;
+  border: none;
+  padding: 12px;
+  padding-left: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .sort-by-text {
+    font-weight: 500;
+    margin: 0px;
+  }
+
+  .sort-by-select {
+    font-weight: 500;
+  }
+}
+
+.select-option {
+  color: #7e858e;
+  font-family: 'Roboto';
+  font-size: 14px;
+}
