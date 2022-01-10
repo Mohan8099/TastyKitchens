@@ -136,7 +136,7 @@ class RestaurantsSection extends Component {
             <RiArrowDropLeftLine className="arrow" />
           </button>
           <h1 testid="active-page-number" className="page-number">
-            {activePage} of 4
+            {activePage}
           </h1>
           <button
             testid="pagination-right-button"
@@ -152,7 +152,7 @@ class RestaurantsSection extends Component {
   }
 
   renderLoader = () => (
-    <div testid="restaurants-list-loader" className="restaurants-list-loader">
+    <div testid="restaurants-list-loader" className="carousel-loader">
       <Loader type="TailSpin" color="#F7931E" height={50} width={50} />
     </div>
   )

@@ -1,8 +1,12 @@
 import {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
-import {FiMenu} from 'react-icons/fi'
 import Cookies from 'js-cookie'
+
+import {FiMenu} from 'react-icons/fi'
 import {AiFillCloseSquare} from 'react-icons/ai'
+
+import CartItemsContext from '../../context/CartItemsContext'
+
 import './index.css'
 
 class NavbarSection extends Component {
@@ -24,10 +28,27 @@ class NavbarSection extends Component {
     this.setState(prev => ({isMenuIconClicked: !prev.isMenuIconClicked}))
   }
 
+  renderCartItemsCount = () => (
+    <CartItemsContext.Consumer>
+      {value => {
+        const {cartItemList} = value
+        const cartCount = cartItemList.length
+        return (
+          <>
+            {cartCount > 0 ? (
+              <span className="cart-count">{cartCount}</span>
+            ) : null}
+          </>
+        )
+      }}
+    </CartItemsContext.Consumer>
+  )
+
   render() {
     const {activeTab} = this.props
     const {isMenuIconClicked} = this.state
     const activeHome = activeTab === 'HOME' ? 'active' : ''
+    const activeCart = activeTab === 'CART' ? 'active' : ''
     return (
       <>
         <nav className="nav-header">
@@ -47,6 +68,12 @@ class NavbarSection extends Component {
             <ul className="nav-menu">
               <Link to="/" className={`nav-link ${activeHome}`}>
                 <li>Home</li>
+              </Link>
+              <Link to="/cart" className={`nav-link ${activeCart}`}>
+                <li>
+                  Cart{' '}
+                  <span className="active">{this.renderCartItemsCount()}</span>
+                </li>
               </Link>
             </ul>
             <div className="nav-menu-small-device">
@@ -69,8 +96,16 @@ class NavbarSection extends Component {
               <div className="nav-menu-container">
                 <ul className="nav-menu-list-mobile">
                   <li className="nav-menu-item-mobile">
-                    <Link to="/" className="nav-link">
+                    <Link to="/" className={`nav-link ${activeHome}`}>
                       Home
+                    </Link>
+                    <Link to="/cart" className={`nav-link ${activeCart}`}>
+                      <li>
+                        Cart{' '}
+                        <span className="active">
+                          {this.renderCartItemsCount()}
+                        </span>
+                      </li>
                     </Link>
                   </li>
                 </ul>
