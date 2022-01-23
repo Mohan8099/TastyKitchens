@@ -8,3 +8,7 @@ This is an individual assessment. All work must be your own. You will also be gi
 
 https://testingkitchen3.ccbp.tech/login {Initial Publish}
 
+Login Credentials 
+
+Username: rahul
+Password: rahul@2021
